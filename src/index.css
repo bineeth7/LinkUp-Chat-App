@@ -5,3 +5,7 @@
   box-sizing: border-box;
   font-family: Poppins;
 }
+/* To hide scrollbar in LeftSidebar */
+::-webkit-scrollbar{
+  display: none;
+}

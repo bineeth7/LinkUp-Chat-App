@@ -8,7 +8,7 @@ function Login() {
 
   return (
     <div className='login'>
-        <img src={assets.linkuplogo} alt="" className='logo'/>
+        <img src={assets.logo_icon} alt="" className='logo'/>
         <form className='login-form' action="">
             <h2>{currState}</h2>
             {currState === "Sign up"?<input type="text" className="form-input" placeholder='Username' required />: null}
