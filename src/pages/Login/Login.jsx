@@ -14,7 +14,7 @@ function Login() {
             {currState === "Sign up"?<input type="text" className="form-input" placeholder='Username' required />: null}
             <input type="text" className="form-input" placeholder='Email address' required />
             <input type="text" className="form-input" placeholder='Password' required />
-            <button type='submit'>Sign Up</button>
+            <button type='submit'>{currState === "Sign up"?"Create account":"Login now"}</button>
             <div className="login-term">
                 <input type="checkbox" />
                 <p>Agree to the terms of use & privacy policy.</p>
