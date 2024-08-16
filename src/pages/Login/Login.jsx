@@ -11,7 +11,7 @@ function Login() {
         <img src={assets.linkuplogo} alt="" className='logo'/>
         <form className='login-form' action="">
             <h2>{currState}</h2>
-            <input type="text" className="form-input" placeholder='Username' required />
+            {currState === "Sign up"?<input type="text" className="form-input" placeholder='Username' required />: null}
             <input type="text" className="form-input" placeholder='Email address' required />
             <input type="text" className="form-input" placeholder='Password' required />
             <button type='submit'>Sign Up</button>
