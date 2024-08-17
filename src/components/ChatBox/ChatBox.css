@@ -66,7 +66,7 @@
     flex-direction: column-reverse;
 }
 /* For both sent & receive msg img */
-.chat-msg div img,.r-msg div img{
+.s-msg div img,.r-msg div img{
     width: 27px;
     aspect-ratio: 1/1;
     border-radius: 50px; /* Circular border-radius */
@@ -93,6 +93,7 @@
     font-size: 11px;
     font-weight: 300;
     border-radius: 8px 8px 0px 8px;
+    margin-bottom: 30px;
 }
 /* Adjust border-radius for received messages */
 .r-msg .msg{
@@ -105,6 +106,6 @@
 }
 .msg-img{
     max-width: 230px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 10px; /* Rectangular border-radius */
 }
