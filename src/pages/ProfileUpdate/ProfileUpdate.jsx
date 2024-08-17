@@ -20,7 +20,7 @@ function ProfileUpdate() {
               <textarea placeholder='Write profile bio' required></textarea>
               <button type='submit'>Save</button>
           </form>
-          <img className='icon' src={assets.logo_icon} alt="" />
+          <img className='icon' src={image? URL.createObjectURL(image) :assets.logo_icon} alt="" />
         </div>
     </div>
   )
