@@ -9,6 +9,13 @@ function LeftSidebar() {
                 <img src={assets.logo} className='logo' alt="" />
                 <div className="menu">
                     <img src={assets.menu_icon} alt="" />
+                    {/* cursor hover changes */}
+                    <div className="sub-menu">
+                        <p>Edit profile</p>
+                        <hr />
+                        <p>Logout</p>
+                    </div>
+                    {/* cursor hover changes end */}
                 </div>
             </div>
             <div className="ls-search">
