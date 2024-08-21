@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth/cordova";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth/cordova";
 import { getFirestore, setDoc } from "firebase/firestore/lite";
 import { toast } from "react-toastify";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,8 +39,16 @@ const signup = async (username,email,password) => {
         })
     } catch (error) {
         console.error(error)
-        toast.error(error.code)
+        toast.error(error.code.split('/')[1].split('-').join(" "))
     }
 }
-
-export {signup}
+//Login method
+const login = async (email, password) => {
+    try {
+        await signInWithEmailAndPassword(auth,email,password);  
+    } catch (error) {
+        console.error(error);
+        toast.error(error.code.split('/')[1].split('-').join(" "))
+    }
+}
+export {signup, login}

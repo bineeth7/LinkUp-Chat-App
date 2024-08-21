@@ -1,7 +1,7 @@
 import './Login.css'
 import assets from '../../assets/assets'
 import { useState } from 'react'
-import { signup } from '../../config/firebase';
+import { signup, login } from '../../config/firebase';
 
 function Login() {
 
@@ -12,10 +12,20 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const onSubmitHandler = (event)=>{
+        event.preventDefault(); //to prevent the website reloading after pressing create account
+        if (currState === "Sign up"){
+            signup(userName,email,password);
+        }
+        else{
+            login(email,password);
+        }
+    }
+
   return (
     <div className='login'>
         <img src={assets.logo_icon} alt="" className='logo'/>
-        <form className='login-form' action="">
+        <form onSubmit={onSubmitHandler} className='login-form' action="">
             <h2>{currState}</h2>
             {currState === "Sign up"?<input onChange={(e)=>setUserName(e.target.value)} value={userName} type="text" className="form-input" placeholder='Username' required />: null}
             <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" className="form-input" placeholder='Email address' required />
