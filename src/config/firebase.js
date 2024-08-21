@@ -42,3 +42,5 @@ const signup = async (username,email,password) => {
         toast.error(error.code)
     }
 }
+
+export {signup}

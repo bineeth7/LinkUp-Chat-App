@@ -1,19 +1,25 @@
 import './Login.css'
 import assets from '../../assets/assets'
 import { useState } from 'react'
+import { signup } from '../../config/firebase';
 
 function Login() {
 
     const [currState, setCurrState] = useState("Sign up");
+
+    //3 state variable to store username, email & password
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
   return (
     <div className='login'>
         <img src={assets.logo_icon} alt="" className='logo'/>
         <form className='login-form' action="">
             <h2>{currState}</h2>
-            {currState === "Sign up"?<input type="text" className="form-input" placeholder='Username' required />: null}
-            <input type="text" className="form-input" placeholder='Email address' required />
-            <input type="text" className="form-input" placeholder='Password' required />
+            {currState === "Sign up"?<input onChange={(e)=>setUserName(e.target.value)} value={userName} type="text" className="form-input" placeholder='Username' required />: null}
+            <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" className="form-input" placeholder='Email address' required />
+            <input onChange={(e)=>setPassword(e.target.value)} value={password} type="password" className="form-input" placeholder='Password' required />
             <button type='submit'>{currState === "Sign up"?"Create account":"Login now"}</button>
             <div className="login-term">
                 <input type="checkbox" />
