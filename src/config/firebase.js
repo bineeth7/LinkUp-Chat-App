@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth/cordova";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth/cordova";
 import { getFirestore, setDoc } from "firebase/firestore/lite";
 import { toast } from "react-toastify";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -35,11 +35,11 @@ const signup = async (username,email,password) => {
             lastSeen:Date.now()
         })
         await setDoc(doc(db,"chats",user.uid),{
-            chatData:[],
+            chatData:[]
         })
     } catch (error) {
         console.error(error)
-        toast.error(error.code.split('/')[1].split('-').join(" "))
+        toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 //Login method
@@ -48,7 +48,17 @@ const login = async (email, password) => {
         await signInWithEmailAndPassword(auth,email,password);  
     } catch (error) {
         console.error(error);
-        toast.error(error.code.split('/')[1].split('-').join(" "))
+        toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
-export {signup, login}
+//Logout method
+const logout = async () => {
+    try {
+        await signOut(auth)   
+    } catch (error) {
+        console.error(error);
+        toast.error(error.code.split('/')[1].split('-').join(" "));
+    }
+}
+
+export {signup, login, logout, auth, db}

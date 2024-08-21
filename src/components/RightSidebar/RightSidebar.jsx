@@ -1,5 +1,6 @@
 import './RightSidebar.css'
 import assets from '../../assets/assets'
+import { logout } from '../../config/firebase'
 function RightSidebar() {
   return (
     <div className='rs'>
@@ -20,7 +21,7 @@ function RightSidebar() {
           <img src={assets.pic2} alt="" />
         </div>
       </div>
-      <button>Logout</button>
+      <button onClick={()=>logout()}>Logout</button>
     </div>
   )
 }
