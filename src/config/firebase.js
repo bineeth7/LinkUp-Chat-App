@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth/cordova";
 import { getFirestore, setDoc } from "firebase/firestore/lite";
+import { toast } from "react-toastify";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,5 +39,6 @@ const signup = async (username,email,password) => {
         })
     } catch (error) {
         console.error(error)
+        toast.error(error.code)
     }
 }
