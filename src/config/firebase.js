@@ -17,4 +17,26 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+const auth = getAuth(app);
+const db = getFirestore(app);
+//Signup method
+const signup = async (username,email,password) => {
+    try {
+        const res = await createUserWithEmailAndPassword(auth,email,password);
+        const user = res.user;
+        await setDoc(doc(db,"users",user.uid),{
+            id:user.uid,
+            username:username.toLowerCase(),
+            email,
+            name:"",
+            avatar:"",
+            bio:"Hey, There I'm using LinkUp",
+            lastSeen:Date.now()
+        })
+        await setDoc(doc(db,"chats",user.uid),{
+            chatData:[],
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
